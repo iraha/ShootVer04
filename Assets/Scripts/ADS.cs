@@ -18,7 +18,8 @@ public class ADS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Monetization.Initialize(gameID, testMode);
+        // it is becouse You can not play it from getting github
+        //Monetization.Initialize(gameID, testMode);
         
     }
 
