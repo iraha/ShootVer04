@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class Player : MonoBehaviour
     [SerializeField] float controlPitchFactor = -25f;
     [SerializeField] float controlRollFactor = -25f;
 
+
+
+
     public Joystick joystick;
 
 
@@ -33,6 +37,7 @@ public class Player : MonoBehaviour
     float yThrow;
 
     bool isControlEnabled = true;
+
 
 
     // Start is called before the first frame update
@@ -127,6 +132,8 @@ public class Player : MonoBehaviour
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
     }
 
+
+
     //void ProcessFiring()
     //{
 
@@ -135,18 +142,18 @@ public class Player : MonoBehaviour
 
     //private void ActivateGuns()
     //{
-        //foreach (GameObject gun in guns)
-        //{
-            //gun.SetActive(true);
-        //}
+    //foreach (GameObject gun in guns)
+    //{
+    //gun.SetActive(true);
+    //}
     //}
 
     //private void DeactivateGuns()
     //{
-        //foreach (GameObject gun in guns)
-        //{
-            //gun.SetActive(false);
-        //}
+    //foreach (GameObject gun in guns)
+    //{
+    //gun.SetActive(false);
+    //}
     //}
 
 }

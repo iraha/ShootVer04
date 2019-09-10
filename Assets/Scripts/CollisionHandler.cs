@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -16,7 +18,16 @@ public class CollisionHandler : MonoBehaviour
     public GameObject gameClearUI;
     public GameObject PauseButton;
 
-    //[SerializeField] GameObject[] guns;
+    // Player takes damage
+    [SerializeField] float perCollision = 20;
+
+    // Player Health
+    [SerializeField] float startHealth = 100f;
+    private float health;
+
+    public Image playerHealthBar;
+    public AudioSource takeDamageSound;
+
 
     // game controller
     public Joystick joystick;
@@ -26,15 +37,18 @@ public class CollisionHandler : MonoBehaviour
     // need to chenge Number
     public int levelUnlock = 2;
 
+    
     AudioSource BGM;
 
     public SceneFader sceneFader;
+
 
     void Start()
     {
         //audioSource = GetComponent<AudioSource>();
         //movingButton.SetActive(true);
         //PauseButton.SetActive(true);
+        health = startHealth;
 
         BGM = GetComponent<AudioSource>();
         BGM.Play();
@@ -63,18 +77,43 @@ public class CollisionHandler : MonoBehaviour
         }
         else
         {
-            StartDeathSequence();
-            deathFX.SetActive(true);
-            //Invoke("MainMenuScene", levelLoadDelay);
-            gameOverUI.SetActive(true);
-            PauseButton.SetActive(false);
-            joystick.SetActive(false);
+            health = health - perCollision;
+            playerHealthBar.fillAmount = health / 100f;
 
-            gunLeft.SetActive(false);
-            gunRight.SetActive(false);
+            takeDamageSound.Play();
+            //deathFX.SetActive(true);
 
-            BGM.Stop();
+
+            if (health >= 1)
+            {
+                //StartDeathSequence();
+                //deathFX.SetActive(true);
+                //Invoke("MainMenuScene", levelLoadDelay);
+
+                //BGM.Stop();
+                print("damage");
+            } else if (health <= 0) {
+
+                StartDeathSequence();
+                deathFX.SetActive(true);
+                //Invoke("MainMenuScene", levelLoadDelay);
+                gameOverUI.SetActive(true);
+                PauseButton.SetActive(false);
+                joystick.SetActive(false);
+
+                gunLeft.SetActive(false);
+                gunRight.SetActive(false);
+
+                BGM.Stop();
+                print("die");
+
+            }
         }
+
+    }
+
+    public void HandleDeath()
+    {
 
     }
 

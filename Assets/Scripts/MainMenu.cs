@@ -14,6 +14,17 @@ public class MainMenu : MonoBehaviour
     {
         playButton.SetActive(true);
         optionButton.SetActive(true);
+
+    }
+
+    void Update()
+    {
+
+    }
+
+    public void OnClick()
+    {
+        //Debug.Log("押された!");  
     }
 
 }

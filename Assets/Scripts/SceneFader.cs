@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class SceneFader : MonoBehaviour
 {
 
+    public Button[] fadeButton;
+
     public Image img;
 
     void Start()

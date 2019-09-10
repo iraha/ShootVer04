@@ -9,6 +9,8 @@ public class LevelSelector : MonoBehaviour
 
     public SceneFader fader;
     public GameObject ui;
+    private GameObject canvas;
+
 
     public Button[] levelButtons;
 
